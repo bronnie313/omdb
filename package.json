@@ -20,6 +20,7 @@
     "@babel/eslint-parser": "^7.24.1",
     "@babel/plugin-syntax-jsx": "^7.24.1",
     "@babel/preset-react": "^7.24.1",
+    "@iconify/react": "^4.1.1",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@vitejs/plugin-react": "^4.2.1",
