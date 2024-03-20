@@ -1,9 +1,16 @@
 import './App.css'
+import MovieCard from './components/MovieCard.jsx'
+import MovieDetails from './components/MovieDetails.jsx'
+import MovieList from './components/MovieList.jsx'
+import SearchBar from './components/SearchBar.jsx'
 
 function App() {
   return (
     <>
-      <h3>Hello world</h3>
+      <MovieList />
+      <MovieCard />
+      <MovieDetails />
+      <SearchBar />
     </>
   )
 }
