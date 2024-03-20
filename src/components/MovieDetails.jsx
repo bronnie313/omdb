@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { Icon } from '@iconify/react'
 
 const MovieDetails = () => {
   const { imdbID } = useParams()
   const [selectedMovie, setSelectedMovie] = useState(null)
+  console.log(selectedMovie)
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -22,17 +23,23 @@ const MovieDetails = () => {
   }, [imdbID])
 
   return (
-    <div>
-      <h2>Details Page</h2>
+    <div className="container">
+      <NavLink to="/">
+        <Icon className="icon" icon="icon-park-solid:back" />
+      </NavLink>
       {selectedMovie && (
-        <>
+        <div className="details">
           <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
-          {/* Add other movie details here based on selectedMovie */}
-        </>
+          <div className="info">
+            <h2>{selectedMovie.Title}</h2>
+            <p>{selectedMovie.Plot}</p>
+            <h4>{selectedMovie.Genre}</h4>
+          </div>
+        </div>
       )}
       {!selectedMovie && (
-        <div>
-          <Icon icon="eos-icons:bubble-loading" />
+        <div style={{ marginTop: '6rem' }}>
+          <Icon icon="eos-icons:bubble-loading" fontSize={'2rem'} />
         </div>
       )}
     </div>
