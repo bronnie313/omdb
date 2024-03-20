@@ -77,7 +77,7 @@ a {
     gap: 120px;
     padding: 3rem;
     background-color: #fff;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
   }
 
   .icon {
