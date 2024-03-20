@@ -3,3 +3,40 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.container {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.movies {
+  max-width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem auto;
+}
+
+.movies li {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+}
+
+.movies img {
+  width: 200px;
+  height: 55vh;
+}
+
+ul {
+  list-style: none;
+}
+
+input[typpe='search'] {
+  width: 50%;
+  margin-right: 0.5rem;
+}

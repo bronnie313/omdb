@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import MovieCard from './MovieCard'
+import SearchBar from './SearchBar'
 
-const url = 'https://www.omdbapi.com/?s=man&apikey=2fa5119d'
+const url = 'https://www.omdbapi.com/?s=boys&apikey=2fa5119d'
 
 const MovieList = () => {
   const [movies, setMovies] = useState([])
@@ -21,9 +22,10 @@ const MovieList = () => {
   }, [])
 
   return (
-    <div>
-      <h2>OMDB MOVIES</h2>
-      <ul>
+    <div className="container">
+      <h2 style={{ margin: '1rem 0' }}>OMDB MOVIES</h2>
+      <SearchBar />
+      <ul className="movies">
         {movies.map((movie) => {
           console.log(movie)
           const { Poster, imdbID, Title, Year } = movie

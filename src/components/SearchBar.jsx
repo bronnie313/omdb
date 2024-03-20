@@ -3,7 +3,10 @@
 const SearchBar = () => {
   return (
     <div>
-      <h3>SearchBar</h3>
+      <form>
+        <input type="search" name="" id="" />
+        <button type="button">search</button>
+      </form>
     </div>
   )
 }
