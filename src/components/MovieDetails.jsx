@@ -31,7 +31,7 @@ const MovieDetails = () => {
         <div className="details">
           <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
           <div className="info">
-            <h2>{selectedMovie.Title}</h2>
+            <h2 style={{ fontFamily: 'cursive' }}>{selectedMovie.Title}</h2>
             <p>{selectedMovie.Plot}</p>
             <h4>{selectedMovie.Genre}</h4>
           </div>
