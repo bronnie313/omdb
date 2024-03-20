@@ -27,7 +27,6 @@ const MovieDetails = () => {
       {selectedMovie && (
         <>
           <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
-          {/* Add other movie details here based on selectedMovie */}
         </>
       )}
       {!selectedMovie && (
