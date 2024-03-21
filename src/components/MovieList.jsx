@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 import SearchBar from './SearchBar'
 import { NavLink } from 'react-router-dom'
 
-const url = 'https://www.omdbapi.com/?s=boys&apikey=2fa5119d'
+const url = 'https://www.omdbapi.com/?s=drunken&apikey=2fa5119d'
 
 const MovieList = () => {
   const [movies, setMovies] = useState([])

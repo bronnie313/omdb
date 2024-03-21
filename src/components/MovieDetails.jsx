@@ -23,22 +23,24 @@ const MovieDetails = () => {
   }, [imdbID])
 
   return (
-    <div className="container">
+    <div className="container-2">
       <NavLink to="/">
         <Icon className="icon" icon="icon-park-solid:back" />
       </NavLink>
       {selectedMovie && (
         <div className="details">
-          <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
-          <div className="info">
-            <h2 style={{ fontFamily: 'cursive' }}>{selectedMovie.Title}</h2>
-            <p>{selectedMovie.Plot}</p>
-            <h4>{selectedMovie.Genre}</h4>
+          <div className="details-wrapper">
+            <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
+            <div className="info">
+              <h2 style={{ fontFamily: 'cursive' }}>{selectedMovie.Title}</h2>
+              <p>{selectedMovie.Plot}</p>
+              <h4>{selectedMovie.Genre}</h4>
+            </div>
           </div>
         </div>
       )}
       {!selectedMovie && (
-        <div style={{ marginTop: '6rem' }}>
+        <div style={{ marginTop: '10rem' }}>
           <Icon icon="eos-icons:bubble-loading" fontSize={'2rem'} />
         </div>
       )}
