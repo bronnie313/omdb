@@ -85,6 +85,8 @@ a {
     display: flex;
     align-items: center;
     padding: 1rem 2rem;
+    gap: 50px;
+    justify-content: space-between;
   }
 
   .details img {
