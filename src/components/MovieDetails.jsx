@@ -14,7 +14,6 @@ const MovieDetails = () => {
         const response = await fetch(
           `https://www.omdbapi.com/?i=${imdbID}&apikey=2fa5119d`
         )
-        console.log(response)
         if (!response.ok && !selectedMovie) {
           setIsError(true)
           setIsLoading(false)
@@ -29,7 +28,7 @@ const MovieDetails = () => {
       setIsLoading(false)
     }
     fetchDetails()
-  }, [imdbID])
+  }, []) /*including imdID and selectedMovie in the dependency array causes an infinite loop */
 
   if (isLoading) {
     return (
@@ -49,6 +48,8 @@ const MovieDetails = () => {
     )
   }
 
+  const { Poster, Title, Plot, Genre } = selectedMovie
+
   return (
     <div className="container-2">
       <NavLink to="/">
@@ -56,11 +57,11 @@ const MovieDetails = () => {
       </NavLink>
       <div className="details">
         <div className="details-wrapper">
-          <img src={selectedMovie.Poster} alt={selectedMovie.Title} />
+          <img src={Poster} alt={Title} />
           <div className="info">
-            <h2 style={{ fontFamily: 'cursive' }}>{selectedMovie.Title}</h2>
-            <p>{selectedMovie.Plot}</p>
-            <h4>{selectedMovie.Genre}</h4>
+            <h2 style={{ fontFamily: 'cursive' }}>{Title}</h2>
+            <p>{Plot}</p>
+            <h4>{Genre}</h4>
           </div>
         </div>
       </div>
