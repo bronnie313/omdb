@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 import { NavLink } from 'react-router-dom'
 import { Icon } from '@iconify/react'
 
-const url = 'https://www.omdbapi.com/?s=horses&apikey=2fa5119d'
+const url = 'https://www.omdbapi.com/?s=dog&apikey=2fa5119d'
 
 const MovieList = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -54,11 +54,16 @@ const MovieList = () => {
         {movies.map((movie) => {
           const { Poster, imdbID, Title, Year } = movie
           return (
-            <li key={imdbID}>
-              <NavLink to={`./movies/${imdbID}`}>
-                <MovieCard Poster={Poster} Title={Title} Year={Year} />
-              </NavLink>
-            </li>
+            <NavLink to={`./movies/${imdbID}`}>
+              <li key={imdbID}>
+                <MovieCard
+                  Poster={Poster}
+                  Title={Title}
+                  Year={Year}
+                  key={imdbID}
+                />
+              </li>
+            </NavLink>
           )
         })}
       </ul>

@@ -1,7 +1,6 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import MovieList from './components/MovieList.jsx'
-import MovieDetails from './components/MovieDetails.jsx'
+import { MovieDetails, MovieList } from './components'
 
 function App() {
   return (
