@@ -1,27 +1,30 @@
 import { useEffect, useState } from 'react'
 import MovieCard from './MovieCard'
-import SearchBar from './SearchBar'
 import { NavLink } from 'react-router-dom'
 import { Icon } from '@iconify/react'
+import PropTypes from 'prop-types'
 
-const url = 'https://www.omdbapi.com/?s=dog&apikey=2fa5119d'
-
-const MovieList = () => {
+const MovieList = ({ search }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
   const [movies, setMovies] = useState([])
 
+  const searchInput = `${search}`
+  const searchValue = searchInput.trim().toLowerCase()
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url)
+        const response = await fetch(
+          `https://www.omdbapi.com/?s=${searchValue}&apikey=2fa5119d`
+        )
         if (!response.ok) {
           setIsLoading(false)
           setIsError(true)
           return
         }
         const data = await response.json()
-        setMovies(data.Search)
+        setMovies(data.Search || [])
       } catch (error) {
         setIsError(true)
         console.error(error)
@@ -30,7 +33,15 @@ const MovieList = () => {
     }
 
     fetchData()
-  }, [])
+  }, [searchValue])
+
+  if (!search) {
+    return (
+      <div style={{ marginTop: '2rem' }}>
+        <p>Please search for a Movie or a group of movies that you want</p>
+      </div>
+    )
+  }
 
   if (isLoading) {
     return (
@@ -46,21 +57,31 @@ const MovieList = () => {
     return <h3>There was an error .. </h3>
   }
 
+  const filteredMovies = movies.filter((movie) =>
+    movie.Title.toLowerCase().includes(searchValue)
+  )
+
+  if (filteredMovies.length === 0) {
+    return (
+      <div style={{ marginTop: '2rem' }}>
+        <p>No movie found for {searchValue}</p>
+      </div>
+    )
+  }
+
   return (
     <div className="container">
-      <h2 style={{ margin: '1rem 0' }}>OMDB MOVIES</h2>
-      <SearchBar />
       <ul className="movies">
-        {movies.map((movie) => {
+        {filteredMovies.map((movie) => {
           const { Poster, imdbID, Title, Year } = movie
           return (
-            <NavLink to={`./movies/${imdbID}`}>
-              <li key={imdbID}>
+            <NavLink to={`./movies/${imdbID}`} key={movie.imdbID}>
+              <li>
                 <MovieCard
                   Poster={Poster}
                   Title={Title}
                   Year={Year}
-                  key={imdbID}
+                  key={movie.imdbID}
                 />
               </li>
             </NavLink>
@@ -69,6 +90,10 @@ const MovieList = () => {
       </ul>
     </div>
   )
+}
+
+MovieList.propTypes = {
+  search: PropTypes.string.isRequired,
 }
 
 export default MovieList

@@ -1,4 +1,4 @@
-import MovieList from './MovieList'
 import MovieDetails from './MovieDetails'
+import Home from './Home'
 
-export { MovieDetails, MovieList }
+export { MovieDetails, Home }

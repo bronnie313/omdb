@@ -1,12 +1,12 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { MovieDetails, MovieList } from './components'
+import { MovieDetails, Home } from './components'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MovieList />} />
+        <Route path="/" element={<Home />} />
         <Route path="/movies/:imdbID" element={<MovieDetails />} />
       </Routes>
     </BrowserRouter>
