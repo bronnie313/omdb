@@ -61,7 +61,7 @@ const MovieList = ({ search }) => {
     movie.Title.toLowerCase().includes(searchValue)
   )
 
-  if (filteredMovies.length === 0) {
+  if (filteredMovies.length === 0 && !isLoading) {
     return (
       <div style={{ marginTop: '2rem' }}>
         <p>No movie found for {searchValue}</p>

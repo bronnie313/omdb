@@ -1,19 +1,15 @@
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 
-const SearchBar = ({ search, setSearch }) => {
+const SearchBar = ({ setSearch }) => {
+  const [searchedMovie, setSearchedMovie] = useState('')
   const handleChange = (e) => {
-    // console.log(e.target.value)
-    setSearch(e.target.value)
-  }
-
-  const resetSearchInput = () => {
-    setSearch('')
+    setSearchedMovie(e.target.value)
   }
 
   const handleSubmission = (e) => {
     e.preventDefault()
-    setSearch(e.target.name)
-    resetSearchInput()
+    setSearch(searchedMovie.trim())
   }
 
   return (
@@ -21,20 +17,22 @@ const SearchBar = ({ search, setSearch }) => {
       <form onSubmit={handleSubmission}>
         <input
           type="text"
-          value={search}
+          value={searchedMovie}
           name="search"
           id="search"
           onChange={handleChange}
           placeholder="Search for movies"
+          style={{ padding: '4px', marginRight: '1rem', width: '30%' }}
         />
-        <button type="submit">search</button>
+        <button type="submit" style={{ padding: '4px' }}>
+          search
+        </button>
       </form>
     </div>
   )
 }
 
 SearchBar.propTypes = {
-  search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
 }
 
