@@ -33,7 +33,7 @@ const MovieList = ({ search }) => {
     }
 
     fetchData()
-  }, [searchValue])
+  }, [searchValue, search])
 
   if (!search) {
     return (
