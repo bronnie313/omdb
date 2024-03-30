@@ -1,34 +1,17 @@
-import { useState, useEffect } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import { Icon } from '@iconify/react'
+import useFetchMovie from './useFetchMovie'
 
 const MovieDetails = () => {
-  const [isError, setIsError] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   const { imdbID } = useParams()
-  const [selectedMovie, setSelectedMovie] = useState(null)
+  const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=2fa5119d`
 
-  useEffect(() => {
-    const fetchDetails = async () => {
-      try {
-        const response = await fetch(
-          `https://www.omdbapi.com/?i=${imdbID}&apikey=2fa5119d`
-        )
-        if (!response.ok && !selectedMovie) {
-          setIsError(true)
-          setIsLoading(false)
-          return
-        }
-        const specData = await response.json()
-        setSelectedMovie(specData)
-      } catch (error) {
-        setIsError(true)
-        console.error(error)
-      }
-      setIsLoading(false)
-    }
-    fetchDetails()
-  }, []) /*including imdID and selectedMovie in the dependency array causes an infinite loop */
+  const { isLoading, isError, selectedMovie } = useFetchMovie(url)
+  const navigate = useNavigate()
+
+  const handleGoBack = () => {
+    navigate(-1)
+  }
 
   if (isLoading) {
     return (
@@ -52,7 +35,7 @@ const MovieDetails = () => {
 
   return (
     <div className="container-2">
-      <NavLink to="/">
+      <NavLink onClick={handleGoBack}>
         <Icon className="icon" icon="icon-park-solid:back" />
       </NavLink>
       <div className="details">

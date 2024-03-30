@@ -1,4 +1,5 @@
 import MovieDetails from './MovieDetails'
-import Home from './Home'
+import SearchBar from './SearchBar'
+import MovieList from './MovieList'
 
-export { MovieDetails, Home }
+export { MovieDetails, SearchBar, MovieList }

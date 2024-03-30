@@ -1,7 +1,9 @@
-import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { SearchContext } from '../App'
 
-const SearchBar = ({ setSearch }) => {
+const SearchBar = () => {
+  const { setSearch } = useContext(SearchContext)
+
   const [searchedMovie, setSearchedMovie] = useState('')
   const handleChange = (e) => {
     setSearchedMovie(e.target.value)
@@ -13,8 +15,9 @@ const SearchBar = ({ setSearch }) => {
   }
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmission}>
+        <h2 style={{ margin: '1rem 0' }}>OMDB MOVIES</h2>
         <input
           type="text"
           value={searchedMovie}
@@ -30,10 +33,6 @@ const SearchBar = ({ setSearch }) => {
       </form>
     </div>
   )
-}
-
-SearchBar.propTypes = {
-  setSearch: PropTypes.func.isRequired,
 }
 
 export default SearchBar

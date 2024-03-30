@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import MovieCard from './MovieCard'
 import { NavLink } from 'react-router-dom'
 import { Icon } from '@iconify/react'
-import PropTypes from 'prop-types'
+import { SearchContext } from '../App'
 
-const MovieList = ({ search }) => {
+const MovieList = () => {
+  const { search } = useContext(SearchContext)
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
   const [movies, setMovies] = useState([])
@@ -33,11 +34,11 @@ const MovieList = ({ search }) => {
     }
 
     fetchData()
-  }, [searchValue, search])
+  }, [searchValue])
 
   if (!search) {
     return (
-      <div style={{ marginTop: '2rem' }}>
+      <div className="container" style={{ marginTop: '2rem' }}>
         <p>Please search for a Movie or a group of movies that you want</p>
       </div>
     )
@@ -54,7 +55,7 @@ const MovieList = ({ search }) => {
   }
 
   if (isError) {
-    return <h3>There was an error .. </h3>
+    return <h3 className="container">There was an error .. </h3>
   }
 
   const filteredMovies = movies.filter((movie) =>
@@ -63,7 +64,7 @@ const MovieList = ({ search }) => {
 
   if (filteredMovies.length === 0 && !isLoading) {
     return (
-      <div style={{ marginTop: '2rem' }}>
+      <div className="container" style={{ marginTop: '2rem' }}>
         <p>No movie found for {searchValue}</p>
       </div>
     )
@@ -90,10 +91,6 @@ const MovieList = ({ search }) => {
       </ul>
     </div>
   )
-}
-
-MovieList.propTypes = {
-  search: PropTypes.string.isRequired,
 }
 
 export default MovieList
