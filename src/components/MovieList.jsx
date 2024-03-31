@@ -10,15 +10,14 @@ const MovieList = () => {
   const [isError, setIsError] = useState(false)
   const [movies, setMovies] = useState([])
 
-  const searchInput = `${search}`
-  const searchValue = searchInput.trim().toLowerCase()
+  const url = `https://www.omdbapi.com/?s=${search
+    .trim()
+    .toLocaleLowerCase()}&apikey=2fa5119d`
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `https://www.omdbapi.com/?s=${searchValue}&apikey=2fa5119d`
-        )
+        const response = await fetch(url)
         if (!response.ok) {
           setIsLoading(false)
           setIsError(true)
@@ -34,7 +33,7 @@ const MovieList = () => {
     }
 
     fetchData()
-  }, [searchValue])
+  }, [search])
 
   if (!search) {
     return (
@@ -59,13 +58,13 @@ const MovieList = () => {
   }
 
   const filteredMovies = movies.filter((movie) =>
-    movie.Title.toLowerCase().includes(searchValue)
+    movie.Title.toLowerCase().includes(search)
   )
 
   if (filteredMovies.length === 0 && !isLoading) {
     return (
       <div className="container" style={{ marginTop: '2rem' }}>
-        <p>No movie found for {searchValue}</p>
+        <p>No movie found for {search}</p>
       </div>
     )
   }
