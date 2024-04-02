@@ -70,33 +70,33 @@ const MovieList = () => {
     movie.Title.toLowerCase().includes(search)
   )
 
-  if (filteredMovies.length === 0) {
-    return (
-      <div className="container" style={{ marginTop: '2rem' }}>
-        <p>No movie found for {search}</p>
-      </div>
-    )
-  }
-
   return (
     <div className="container">
-      <ul className="movies">
-        {filteredMovies.map((movie) => {
-          const { Poster, imdbID, Title, Year } = movie
-          return (
-            <NavLink to={`./movies/${imdbID}`} key={movie.imdbID}>
-              <li>
-                <MovieCard
-                  Poster={Poster}
-                  Title={Title}
-                  Year={Year}
-                  key={movie.imdbID}
-                />
-              </li>
-            </NavLink>
-          )
-        })}
-      </ul>
+      {filteredMovies.length > 0 ? (
+        <div className="container">
+          <ul className="movies">
+            {filteredMovies.map((movie) => {
+              const { Poster, imdbID, Title, Year } = movie
+              return (
+                <NavLink to={`./movies/${imdbID}`} key={movie.imdbID}>
+                  <li>
+                    <MovieCard
+                      Poster={Poster}
+                      Title={Title}
+                      Year={Year}
+                      key={movie.imdbID}
+                    />
+                  </li>
+                </NavLink>
+              )
+            })}
+          </ul>
+        </div>
+      ) : (
+        <div className="container" style={{ marginTop: '2rem' }}>
+          <p>No movie found for {search}</p>
+        </div>
+      )}
     </div>
   )
 }
