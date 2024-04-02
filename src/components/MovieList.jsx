@@ -4,6 +4,7 @@ import MovieCard from './MovieCard'
 import { NavLink } from 'react-router-dom'
 import { Icon } from '@iconify/react'
 import { SearchContext } from '../App'
+import DelayedMessage from './DelayedMessage'
 
 const MovieList = () => {
   const { search } = useContext(SearchContext)
@@ -94,7 +95,9 @@ const MovieList = () => {
         </div>
       ) : (
         <div className="container" style={{ marginTop: '2rem' }}>
-          <p>No movie found for {search}</p>
+          <DelayedMessage delay={5000}>
+            <p>No movie found for {search}</p>
+          </DelayedMessage>
         </div>
       )}
     </div>
