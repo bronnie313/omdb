@@ -40,7 +40,7 @@ const MovieDetails = () => {
       </NavLink>
       <div className="details">
         <div className="details-wrapper">
-          <img src={Poster} alt={Title} />
+          <img src={Poster} alt={Title} loading="lazy" />
           <div className="info">
             <h2 style={{ fontFamily: 'cursive' }}>{Title}</h2>
             <p>{Plot}</p>

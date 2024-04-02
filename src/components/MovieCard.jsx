@@ -9,7 +9,7 @@ const MovieCard = ({ Poster, Title, Year }) => {
         {Title}
       </h3>
       <div className="img-container">
-        <img src={Poster} alt="Poster" />
+        <img src={Poster} alt="Poster" loading="lazy" />
       </div>
       <div>
         <p style={{ fontSize: 'larger', color: 'seagreen', fontWeight: '700' }}>

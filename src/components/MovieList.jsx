@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
+/* eslint react-refresh/only-export-components: "off" */
+import { memo, useCallback, useContext, useEffect, useState } from 'react'
 import MovieCard from './MovieCard'
 import { NavLink } from 'react-router-dom'
 import { Icon } from '@iconify/react'
@@ -14,26 +15,26 @@ const MovieList = () => {
     .trim()
     .toLocaleLowerCase()}&apikey=2fa5119d`
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url)
-        if (!response.ok) {
-          setIsLoading(false)
-          setIsError(true)
-          return
-        }
-        const data = await response.json()
-        setMovies(data.Search || [])
-      } catch (error) {
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch(url)
+      if (!response.ok) {
+        setIsLoading(false)
         setIsError(true)
-        console.error(error)
+        return
       }
-      setIsLoading(false)
+      const data = await response.json()
+      setMovies(data.Search || [])
+    } catch (error) {
+      setIsError(true)
+      console.error(error)
     }
+    setIsLoading(false)
+  }, [search, url])
 
+  useEffect(() => {
     fetchData()
-  }, [search])
+  }, [fetchData])
 
   if (!search) {
     return (
@@ -92,4 +93,4 @@ const MovieList = () => {
   )
 }
 
-export default MovieList
+export default memo(MovieList)

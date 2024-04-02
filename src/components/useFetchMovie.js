@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const useFetchMovie = (url) => {
   const [isError, setIsError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [selectedMovie, setSelectedMovie] = useState(null)
 
-  useEffect(() => {
-    const fetchDetails = async () => {
+  const fetchDetails = useCallback(
+    async () => {
       try {
         const response = await fetch(url)
         if (!response.ok && !selectedMovie) {
@@ -21,10 +21,14 @@ const useFetchMovie = (url) => {
         console.error(error)
       }
       setIsLoading(false)
-    }
-    fetchDetails()
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    [selectedMovie, url]
+  )
+
+  useEffect(() => {
+    fetchDetails()
+  }, [fetchDetails])
 
   return { isLoading, isError, selectedMovie }
 }
