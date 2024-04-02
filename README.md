@@ -99,7 +99,7 @@ A project was built Using
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [See WEB here](https://omdb-snnu.onrender.com)
+- [See WEB here](https://omdb-snnu.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
