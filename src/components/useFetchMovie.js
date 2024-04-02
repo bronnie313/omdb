@@ -8,7 +8,7 @@ const useFetchMovie = (url) => {
   const fetchDetails = useCallback(
     async () => {
       try {
-        const cachedDetails = localStorage.getItem(url)
+        const cachedDetails = sessionStorage.getItem(url)
         if (cachedDetails) {
           setSelectedMovie(JSON.parse(cachedDetails))
           setIsLoading(false)
@@ -21,7 +21,7 @@ const useFetchMovie = (url) => {
           }
           const specData = await response.json()
           setSelectedMovie(specData)
-          localStorage.setItem(url, JSON.stringify(specData))
+          sessionStorage.setItem(url, JSON.stringify(specData))
           setIsLoading(false)
         }
       } catch (error) {

@@ -17,7 +17,7 @@ const MovieList = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const cachedData = localStorage.getItem(url)
+      const cachedData = sessionStorage.getItem(url)
       if (cachedData) {
         setMovies(JSON.parse(cachedData))
         setIsLoading(false)
@@ -30,7 +30,7 @@ const MovieList = () => {
         }
         const data = await response.json()
         setMovies(data.Search || [])
-        localStorage.setItem(url, JSON.stringify(data.Search || []))
+        sessionStorage.setItem(url, JSON.stringify(data.Search || []))
         setIsLoading(false)
       }
     } catch (error) {
@@ -70,7 +70,7 @@ const MovieList = () => {
     movie.Title.toLowerCase().includes(search)
   )
 
-  if (filteredMovies.length === 0 && !isLoading) {
+  if (filteredMovies.length === 0) {
     return (
       <div className="container" style={{ marginTop: '2rem' }}>
         <p>No movie found for {search}</p>
