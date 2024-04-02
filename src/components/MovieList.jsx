@@ -17,19 +17,27 @@ const MovieList = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetch(url)
-      if (!response.ok) {
+      const cachedData = localStorage.getItem(url)
+      if (cachedData) {
+        setMovies(JSON.parse(cachedData))
         setIsLoading(false)
-        setIsError(true)
-        return
+      } else {
+        const response = await fetch(url)
+        if (!response.ok) {
+          setIsLoading(false)
+          setIsError(true)
+          return
+        }
+        const data = await response.json()
+        setMovies(data.Search || [])
+        localStorage.setItem(url, JSON.stringify(data.Search || []))
+        setIsLoading(false)
       }
-      const data = await response.json()
-      setMovies(data.Search || [])
     } catch (error) {
       setIsError(true)
       console.error(error)
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }, [search, url])
 
   useEffect(() => {
