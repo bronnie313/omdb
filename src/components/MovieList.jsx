@@ -12,9 +12,7 @@ const MovieList = () => {
   const [isError, setIsError] = useState(false)
   const [movies, setMovies] = useState([])
 
-  const url = `https://www.omdbapi.com/?s=${search
-    .trim()
-    .toLocaleLowerCase()}&apikey=2fa5119d`
+  const url = `https://www.omdbapi.com/?s=${search}&apikey=2fa5119d`
 
   const fetchData = useCallback(async () => {
     try {

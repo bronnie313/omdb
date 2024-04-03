@@ -2,16 +2,16 @@ import { useContext, useState } from 'react'
 import { SearchContext } from '../App'
 
 const SearchBar = () => {
-  const { setSearch } = useContext(SearchContext)
-
-  const [searchedMovie, setSearchedMovie] = useState('')
-  const handleChange = (e) => {
-    setSearchedMovie(e.target.value)
-  }
+  const { search, setSearch } = useContext(SearchContext)
 
   const handleSubmission = (e) => {
     e.preventDefault()
-    setSearch(searchedMovie.trim())
+    console.log(search)
+  }
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setSearch(e.target.value)
   }
 
   return (
@@ -20,7 +20,7 @@ const SearchBar = () => {
         <h2 style={{ margin: '1rem 0' }}>OMDB MOVIES</h2>
         <input
           type="text"
-          value={searchedMovie}
+          value={search}
           name="search"
           id="search"
           onChange={handleChange}
