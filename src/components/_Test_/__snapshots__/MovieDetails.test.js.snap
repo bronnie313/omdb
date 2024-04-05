@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders MovieDetails correctly 1`] = `
+<div
+  style="margin-top: 9rem; text-align: center;"
+>
+  <span />
+  <div
+    style="margin-top: 1rem;"
+  />
+  <p>
+    loading
+  </p>
+</div>
+`;
