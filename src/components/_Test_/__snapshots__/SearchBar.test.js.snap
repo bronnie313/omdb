@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar component renders SearchBar correctly 1`] = `
+<div
+  class="container"
+>
+  <form>
+    <h2
+      style="margin: 1rem 0px;"
+    >
+      OMDB MOVIES
+    </h2>
+    <input
+      id="search"
+      name="search"
+      placeholder="Search for movies"
+      style="padding: 4px; margin-right: 1rem; width: 30%;"
+      type="text"
+      value=""
+    />
+    <button
+      style="padding: 4px;"
+      type="submit"
+    >
+      search
+    </button>
+  </form>
+</div>
+`;

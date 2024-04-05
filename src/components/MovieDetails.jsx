@@ -1,3 +1,4 @@
+import React from 'react'
 import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import { Icon } from '@iconify/react'
 import useFetchMovie from './useFetchMovie'

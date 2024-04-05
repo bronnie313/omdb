@@ -1,4 +1,5 @@
 /* eslint react-refresh/only-export-components: "off" */
+import React from 'react'
 import { memo, useCallback, useContext, useEffect, useState } from 'react'
 import MovieCard from './MovieCard'
 import { NavLink } from 'react-router-dom'
