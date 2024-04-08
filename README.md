@@ -222,7 +222,7 @@ https://github.com/bronnie313/omdb
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I want to thank all of you for your constant hard work and dedication. And I would like to thank Madam Jeniffer for sharing this awesome project with me and giving me a prime opportunity to showcase my skills.
+I would like to thank Madam Jeniffer for sharing this awesome project with me and giving me a prime opportunity to work on it and showcase my skills.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
