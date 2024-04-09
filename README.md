@@ -112,7 +112,7 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 
 In order to run this project you need:
-`Install VSCode or Atom`
+` Install VSCode or Atom `
 
 <!--
 Example command:
