@@ -60,7 +60,7 @@ After you're finished please remove all the comments and instructions!
 
 # 📖 OMDBID Movies <a name="about-project"></a>
 
-OMDB movies is a React web application project which allows users to browse and search for movies. It is powered by an OMDBI movies API that provides data and it contains a search bar to search for a desired movie.
+OMDB movies is a React web application project which allows users to browse and search for movies. It is powered by an OMDBI movies API that provides data and It contains a search bar to search for a desired movie.
 
 ## ScreenShots
 
