@@ -64,8 +64,8 @@ OMDB movies is a React web application project which allows users to browse and 
 
 ## ScreenShots
 
-![Home-picture](cap1.JPG)
-![details-picture](Cap2.JPG)
+<img src="cap1.JPG" alt="Home-picture" width="400" height="300">
+<img src="Cap2.JPG" alt="details-picture" width="400" height="300">
 
 ## 🛠 Built With <a name="built-with"></a>
 
